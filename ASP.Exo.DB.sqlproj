@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>ASP.Exo.DB</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{b459bdca-431e-4165-bc11-0d73a9c10f2e}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath />
+    <RootNamespace>ASP.Exo.DB</RootNamespace>
+    <AssemblyName>ASP.Exo.DB</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="Views" />
+    <Folder Include="ScalarFunctions" />
+    <Folder Include="StoredProcedures" />
+    <Folder Include="Tables" />
+    <Folder Include="Scripts" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ASP.Exo.DB.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Views\V_AspUser_Enable.sql" />
+    <Build Include="ScalarFunctions\SF_SaltAndHash.sql" />
+    <Build Include="StoredProcedures\SP_AspUser_CheckPassword.sql" />
+    <Build Include="StoredProcedures\SP_AspUser_Delete.sql" />
+    <Build Include="StoredProcedures\SP_AspUser_GetAll.sql" />
+    <Build Include="StoredProcedures\SP_AspUser_GetById.sql" />
+    <Build Include="StoredProcedures\SP_AspUser_Insert.sql" />
+    <Build Include="StoredProcedures\SP_AspUser_Update.sql" />
+    <None Include="Scripts\AspUser.AddAdmin.sql" />
+    <PostDeploy Include="Scripts\Script.PostDeployment.Main.sql" />
+    <None Include="Scripts\UserRight.Init.sql" />
+    <Build Include="StoredProcedures\SP_UserRight_DenyAdmin.sql" />
+    <Build Include="StoredProcedures\SP_UserRight_DenyDefault.sql" />
+    <Build Include="StoredProcedures\SP_UserRight_GrantAdmin.sql" />
+    <Build Include="StoredProcedures\SP_UserRight_GrantDefault.sql" />
+    <Build Include="Tables\AspUser.sql" />
+    <Build Include="Tables\AspUser_UserRight.sql" />
+    <Build Include="Tables\UserRight.sql" />
+    <Build Include="StoredProcedures\SP_AspUser_HaveAdminRight.sql" />
+    <Build Include="StoredProcedures\SP_AspUser_HaveDefaultRight.sql" />
+  </ItemGroup>
+</Project>
